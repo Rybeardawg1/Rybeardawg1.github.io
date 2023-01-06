@@ -1,0 +1,156 @@
+body {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  color: #ebebeb;
+  background-color: #242424;
+  overflow: hidden;
+  user-select: none;
+}
+
+.carousel {
+  margin-bottom: 4rem;
+}
+
+.carousel-caption {
+  bottom: 3rem;
+  z-index: 10;
+}
+
+.carousel-item {
+  height: 32rem;
+}
+
+.carousel-item>img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 32rem;
+}
+
+.marketing .col-lg-4 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.marketing h2 {
+  font-weight: 400;
+}
+
+.marketing .col-lg-4 p {
+  margin-right: .75rem;
+  margin-left: .75rem;
+}
+
+.featurette-divider {
+  margin: 5rem 0;
+}
+
+.featurette-heading {
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -.05rem;
+}
+
+
+@media (min-width: 40em) {
+  .carousel-caption p {
+    margin-bottom: 1.25rem;
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+
+  .featurette-heading {
+    font-size: 50px;
+  }
+}
+
+@media (min-width: 62em) {
+  .featurette-heading {
+    margin-top: 7rem;
+  }
+}
+
+
+.slideFade {
+  animation: fadeIn 2s ease-in-out;
+}
+
+
+@keyframes fadeIn {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+.BarslideIn {
+  animation: slideMe 1.5s ease-in-out;
+}
+
+@keyframes slideMe {
+  0% {
+    transform: translateY(-100px);
+  }
+
+  100% {
+    transform: translateY(-49px);
+  }
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  animation: out .5s ease-in-out;
+  border-radius: 20px;
+}
+
+img:hover {
+  animation: in .7s ease-in-out;
+  transform: scale(.9);
+}
+
+@keyframes in {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(.9);
+  }
+}
+
+@keyframes out {
+  0% {
+    transform: scale(.9);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+} 
+
+.setMargintoTen {
+  margin-top: 100px;
+}
+
+
+.cards {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  animation: out .5s ease-in-out;
+  border-radius: 20px;
+}
+
+.cards:hover {
+  animation: in .5s ease-in-out;
+  scale: .9;
+  display: inline-block;
+  perspective: 1800px;
+  transform-origin: 50% 50%;
+  transform-style: preserve-3d;
+  transform: rotateX(11deg) rotateY(16.5deg);
+}
