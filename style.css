@@ -2,9 +2,35 @@ body {
   padding-top: 3rem;
   padding-bottom: 3rem;
   color: #ebebeb;
-  background-color: #242424;
+  background: linear-gradient(166deg, rgb(171, 171, 237) 0%, rgb(108, 108, 219) 50%, rgba(73, 73, 73, 0.984) 100%);
+  background-repeat: no-repeat;
+  background-size: 800%;
+  animation: gradient 25s ease infinite;
+  background-attachment: fixed;
   overflow: hidden;
   user-select: none;
+}
+
+@keyframes gradient {
+  0% {
+      background-position: 0% 50%;
+  }
+
+  50% {
+      background-position: 100% 50%;
+  }
+
+  100% {
+      background-position: 0% 50%;
+  }
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .carousel {
@@ -105,34 +131,13 @@ body {
 
 img {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  animation: out .5s ease-in-out;
   border-radius: 20px;
+  transition: transform .6s cubic-bezier(.56, .01, .13, 1);
 }
 
 img:hover {
-  animation: in .7s ease-in-out;
-  transform: scale(.9);
+  transform: scale(1.1);
 }
-
-@keyframes in {
-  0% {
-    transform: scale(1);
-  }
-
-  100% {
-    transform: scale(.9);
-  }
-}
-
-@keyframes out {
-  0% {
-    transform: scale(.9);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-} 
 
 .setMargintoTen {
   margin-top: 100px;
