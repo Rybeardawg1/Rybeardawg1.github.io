@@ -2,10 +2,10 @@ body {
   padding-top: 3rem;
   padding-bottom: 3rem;
   color: #ebebeb;
-  background: linear-gradient(166deg, rgb(171, 171, 237) 0%, rgb(108, 108, 219) 50%, rgba(73, 73, 73, 0.984) 100%);
+  background: linear-gradient(166deg, rgb(66, 66, 136) 0%, rgba(46, 46, 73, 0.984) 100%);
   background-repeat: no-repeat;
   background-size: 800%;
-  animation: gradient 25s ease infinite;
+  animation: gradient 50s ease infinite;
   background-attachment: fixed;
   overflow: hidden;
   user-select: none;
@@ -31,27 +31,6 @@ body {
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-}
-
-.carousel {
-  margin-bottom: 4rem;
-}
-
-.carousel-caption {
-  bottom: 3rem;
-  z-index: 10;
-}
-
-.carousel-item {
-  height: 32rem;
-}
-
-.carousel-item>img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  height: 32rem;
 }
 
 .marketing .col-lg-4 {
