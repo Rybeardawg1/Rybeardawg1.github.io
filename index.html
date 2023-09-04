@@ -87,15 +87,45 @@
       </div>
     </main>
   </body>
+  <p style="text-align:center; color: hsla(0, 0%, 86%, 0.555);">Last Updated: <span id="last-updated">Loading...</span></p>
   <!-- <input class="color-range" type="range" min="0" max="100" value="75" title="Drag me, baby."> -->
 </html>
 
 <script>
-  console.log("script.js", "script.js loaded");
+  console.log("script.js loaded");
   if (document.cookie == "visited=true") {
     document.getElementById("BarslideInEffect").classList.remove("BarslideIn");
     document.getElementById("slideFadeEffect").classList.remove("slideFade");
   }
   document.cookie = "visited=true";
   console.log(document.cookie);
+
+  const Http = new XMLHttpRequest();
+  const url =
+    "https://api.github.com/repos/Rybeardawg1/Rybeardawg1.github.io/commits";
+  Http.open("GET", url);
+  Http.send();
+
+  Http.onreadystatechange = (e) => {
+    response = Http.responseText;
+    index = 9 + response.search('"date": ');
+    const lastCommitDate = new Date(response.substring(index, index + 8));
+    console.log(lastCommitDate);
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    const formattedDate = lastCommitDate.toLocaleDateString();
+    document.getElementById("last-updated").textContent = months[lastCommitDate.getMonth()] + " " + lastCommitDate.getDate() + ", " + lastCommitDate.getFullYear();
+  };
 </script>
