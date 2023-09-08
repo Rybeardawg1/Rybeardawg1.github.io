@@ -2,26 +2,56 @@ body {
   padding-top: 3rem;
   padding-bottom: 3rem;
   color: #ebebeb;
-  background: linear-gradient(166deg, rgb(66, 66, 136) 0%, rgba(46, 46, 73, 0.984) 100%);
+  background: linear-gradient(
+    166deg,
+    hsl(227, 36%, 36%) 0%,
+    hsl(227, 31%, 24%) 100%
+  );
   background-repeat: no-repeat;
   background-size: 800%;
-  animation: gradient 50s ease infinite;
+  animation: gradient 20s ease infinite;
   background-attachment: fixed;
   overflow: hidden;
   user-select: none;
 }
 
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  input[type="range"] {
+    width: 10rem;
+    height: 1rem;
+    overflow: hidden;
+    -webkit-appearance: none;
+    background-color: #767676;
+    border-radius: 5rem;
+  }
+
+  input[type="range"]::-webkit-slider-runnable-track {
+    height: 10px;
+    -webkit-appearance: none;
+    color: hsl(227, 31%, 24%);
+    border-radius: 5rem;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    width: 10px;
+    -webkit-appearance: none;
+    height: 10px;
+    background: #ffffff;
+    border-radius: 5rem;
+  }
+}
+
 @keyframes gradient {
   0% {
-      background-position: 0% 50%;
+    background-position: 0% 50%;
   }
 
   50% {
-      background-position: 100% 50%;
+    background-position: 100% 50%;
   }
 
   100% {
-      background-position: 0% 50%;
+    background-position: 0% 50%;
   }
 }
 
@@ -43,8 +73,8 @@ body {
 }
 
 .marketing .col-lg-4 p {
-  margin-right: .75rem;
-  margin-left: .75rem;
+  margin-right: 0.75rem;
+  margin-left: 0.75rem;
 }
 
 .featurette-divider {
@@ -54,9 +84,8 @@ body {
 .featurette-heading {
   font-weight: 300;
   line-height: 1;
-  letter-spacing: -.05rem;
+  letter-spacing: -0.05rem;
 }
-
 
 @media (min-width: 40em) {
   .carousel-caption p {
@@ -76,11 +105,9 @@ body {
   }
 }
 
-
 .slideFade {
   animation: fadeIn 2s ease-in-out;
 }
-
 
 @keyframes fadeIn {
   0% {
@@ -111,7 +138,7 @@ body {
 img {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 20px;
-  transition: transform .6s cubic-bezier(.56, .01, .13, 1);
+  transition: transform 0.6s cubic-bezier(0.56, 0.01, 0.13, 1);
 }
 
 img:hover {
@@ -122,16 +149,15 @@ img:hover {
   margin-top: 100px;
 }
 
-
 .cards {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  animation: out .5s ease-in-out;
+  animation: out 0.5s ease-in-out;
   border-radius: 20px;
 }
 
 .cards:hover {
-  animation: in .5s ease-in-out;
-  scale: .9;
+  animation: in 0.5s ease-in-out;
+  scale: 0.9;
   display: inline-block;
   perspective: 1800px;
   transform-origin: 50% 50%;

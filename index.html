@@ -3,8 +3,6 @@
   <head>
     <link href="bootstrap.min.css" rel="stylesheet" />
     <link href="style.css" rel="stylesheet" />
-    <link href="Resume.html" rel="import" />
-    <!-- <link href="script.js" rel="script" /> -->
   </head>
 
   <title>Ryan Barry</title>
@@ -18,7 +16,11 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
               <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="index.html"
+                  <a
+                    class="nav-link"
+                    style="pointer-events: none; cursor: default"
+                    aria-current="page"
+                    href="#"
                     >Ryan Barry</a
                   >
                 </li>
@@ -86,19 +88,91 @@
         </div>
       </div>
     </main>
+    <p
+      style="
+        position: absolute;
+        left: 1%;
+        bottom: 0%;
+        color: hsla(0, 0%, 86%, 0.555);
+      "
+    >
+      Last Updated: <span id="last-updated">Loading...</span>
+    </p>
+    <div style="opacity: 70%; position: absolute; right: 1%; bottom: 1%">
+      <input class="color-range" type="range" min="0" max="100" value="63" />
+    </div>
   </body>
-  <p style="text-align:center; color: hsla(0, 0%, 86%, 0.555);">Last Updated: <span id="last-updated">Loading...</span></p>
-  <!-- <input class="color-range" type="range" min="0" max="100" value="75" title="Drag me, baby."> -->
 </html>
 
 <script>
+  function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == " ") {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        console.log(document.cookie);
+        return c.substring(name.length, c.length);
+      }
+    }
+    console.log(document.cookie);
+    return "";
+  }
+  function addCookie(cookie) {
+    document.cookie = cookie;
+    console.log(document.cookie);
+  }
+</script>
+
+<script>
+  // if (getCookie("hue") != "") {
+  //   var hue = getCookie("hue");
+  //   var bgHsl =
+  //     " linear-gradient(166deg, hsl(" +
+  //     hue +
+  //     ", 36%, 36%) 0%, hsl(" +
+  //     hue +
+  //     ", 31%, 24%) 100%)";
+  //   document.body.style.background = bgHsl;
+  //   document.body.style.backgroundAttachment = "fixed";
+  //   document.body.style.backgroundSize = "800%";
+  //   document.body.style.backgroundRepeat = "no-repeat";
+  // } else {
+  var colorRange = document.querySelector(".color-range");
+  colorRange.addEventListener("input", function (e) {
+    var hue = ((this.value / 100) * 360).toFixed(0);
+    var bgHsl =
+      " linear-gradient(166deg, hsl(" +
+      hue +
+      ", 36%, 36%) 0%, hsl(" +
+      hue +
+      ", 31%, 24%) 100%)";
+    document.body.style.background = bgHsl;
+    document.body.style.backgroundAttachment = "fixed";
+    document.body.style.backgroundSize = "800%";
+    document.body.style.backgroundRepeat = "no-repeat";
+    addCookie("hue=" + hue + ";");
+  });
+  // }
+</script>
+
+<script>
   console.log("script.js loaded");
-  if (document.cookie == "visited=true") {
+
+  let date = new Date();
+
+  if (document.cookie == date.toDateString()) {
     document.getElementById("BarslideInEffect").classList.remove("BarslideIn");
     document.getElementById("slideFadeEffect").classList.remove("slideFade");
+  } else {
+    document.cookie = "visited=" + date.toDateString() + ";";
   }
-  document.cookie = "visited=true";
-  console.log(document.cookie);
+
+  console.log("cookies: " + document.cookie);
 
   const Http = new XMLHttpRequest();
   const url =
@@ -126,6 +200,11 @@
       "December",
     ];
     const formattedDate = lastCommitDate.toLocaleDateString();
-    document.getElementById("last-updated").textContent = months[lastCommitDate.getMonth()] + " " + lastCommitDate.getDate() + ", " + lastCommitDate.getFullYear();
+    document.getElementById("last-updated").textContent =
+      months[lastCommitDate.getMonth()] +
+      " " +
+      lastCommitDate.getDate() +
+      ", " +
+      lastCommitDate.getFullYear();
   };
 </script>
