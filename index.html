@@ -185,8 +185,7 @@
   Http.onreadystatechange = (e) => {
     response = Http.responseText;
     index = 9 + response.search('"date": ');
-    const lastCommitDate = new Date(response.substring(index, index + 8));
-    console.log(lastCommitDate);
+    const lastCommitDate = new Date(response.substring(index, index + 10));
     const months = [
       "January",
       "February",
