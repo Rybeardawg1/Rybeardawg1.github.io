@@ -99,7 +99,7 @@
       Last Updated: <span id="last-updated">Loading...</span>
     </p>
     <div style="opacity: 70%; position: absolute; right: 1%; bottom: 1%">
-      <input class="color-range" type="range" min="0" max="100" value="63" />
+      <input class="color-range" type="range" min="0" max="100" value="" />
     </div>
   </body>
 </html>
@@ -115,33 +115,34 @@
         c = c.substring(1);
       }
       if (c.indexOf(name) == 0) {
-        console.log(document.cookie);
         return c.substring(name.length, c.length);
       }
     }
-    console.log(document.cookie);
     return "";
   }
   function addCookie(cookie) {
     document.cookie = cookie;
-    console.log(document.cookie);
   }
 </script>
 
 <script>
-  // if (getCookie("hue") != "") {
-  //   var hue = getCookie("hue");
-  //   var bgHsl =
-  //     " linear-gradient(166deg, hsl(" +
-  //     hue +
-  //     ", 36%, 36%) 0%, hsl(" +
-  //     hue +
-  //     ", 31%, 24%) 100%)";
-  //   document.body.style.background = bgHsl;
-  //   document.body.style.backgroundAttachment = "fixed";
-  //   document.body.style.backgroundSize = "800%";
-  //   document.body.style.backgroundRepeat = "no-repeat";
-  // } else {
+  window.onload = function hueSetter() {
+    if (getCookie("hue") != "") {
+      var hue = getCookie("hue");
+      var bgHsl =
+        " linear-gradient(166deg, hsl(" +
+        hue +
+        ", 36%, 36%) 0%, hsl(" +
+        hue +
+        ", 31%, 24%) 100%)";
+      document.body.style.background = bgHsl;
+      document.body.style.backgroundAttachment = "fixed";
+      document.body.style.backgroundSize = "800%";
+      document.body.style.backgroundRepeat = "no-repeat";
+      document.querySelector(".color-range").value = hue / 3.6;
+    }
+  };
+
   var colorRange = document.querySelector(".color-range");
   colorRange.addEventListener("input", function (e) {
     var hue = ((this.value / 100) * 360).toFixed(0);
@@ -156,8 +157,8 @@
     document.body.style.backgroundSize = "800%";
     document.body.style.backgroundRepeat = "no-repeat";
     addCookie("hue=" + hue + ";");
+    console.log("changed hue cookie");
   });
-  // }
 </script>
 
 <script>
@@ -165,11 +166,12 @@
 
   let date = new Date();
 
-  if (document.cookie == date.toDateString()) {
+  if (getCookie("visited") == date.toDateString()) {
     document.getElementById("BarslideInEffect").classList.remove("BarslideIn");
     document.getElementById("slideFadeEffect").classList.remove("slideFade");
   } else {
-    document.cookie = "visited=" + date.toDateString() + ";";
+    addCookie("visited=" + date.toDateString() + ";");
+    console.log("changed last visited cookie");
   }
 
   console.log("cookies: " + document.cookie);
