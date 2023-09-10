@@ -61,6 +61,7 @@
                   rel="noopener noreferrer"
                 >
                   <img
+                    id="icon1" 
                     src="Images/LinkedIn_logo_initials.png"
                     width="144"
                     height="144"
@@ -75,7 +76,12 @@
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <img src="Images/image0 (2).jpg" width="144" height="144" />
+                  <img
+                    id="icon2"
+                    src="Images/image0 (2).jpg"
+                    width="144"
+                    height="144"
+                  />
                 </a>
                 <h2 style="padding-top: 10px">GitHub</h2>
                 <p>Coursework and personal projects</p>
@@ -86,7 +92,12 @@
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <img src="Images/RyanLogo.jpg" width="144" height="144" />
+                  <img
+                    id="icon3"
+                    src="Images/RyanLogo.jpg"
+                    width="144"
+                    height="144"
+                  />
                 </a>
                 <rect width="100%" height="100%" fill="#777" />
                 <h2 style="padding-top: 10px">LeetCode</h2>
@@ -115,6 +126,84 @@
 </html>
 
 <script>
+  console.log("script.js loaded");
+  let icon1 = document.getElementById("icon1");
+  let icon2 = document.getElementById("icon2");
+  let icon3 = document.getElementById("icon3");
+  const height = icon1.clientHeight;
+  const width = icon1.clientWidth;
+  icon1.addEventListener("mousemove", handleIcon1Move);
+  icon2.addEventListener("mousemove", handleIcon2Move);
+  icon3.addEventListener("mousemove", handleIcon3Move);
+
+  function handleIcon1Move(e) {
+    const xVal = e.layerX;
+    const yVal = e.layerY;
+    const yRotation = 20 * ((xVal - width / 2) / width);
+    const xRotation = -20 * ((yVal - height / 2) / height);
+    const string =
+      "perspective(500px) scale(1.1) rotateX(" +
+      xRotation +
+      "deg) rotateY(" +
+      yRotation +
+      "deg)";
+      icon1.style.transform = string;
+  }
+  function handleIcon2Move(e) {
+    const xVal = e.layerX;
+    const yVal = e.layerY;
+    const yRotation = 20 * ((xVal - width / 2) / width);
+    const xRotation = -20 * ((yVal - height / 2) / height);
+    const string =
+      "perspective(500px) scale(1.1) rotateX(" +
+      xRotation +
+      "deg) rotateY(" +
+      yRotation +
+      "deg)";
+      icon2.style.transform = string;
+  }
+  function handleIcon3Move(e) {
+    const xVal = e.layerX;
+    const yVal = e.layerY;
+    const yRotation = 20 * ((xVal - width / 2) / width);
+    const xRotation = -20 * ((yVal - height / 2) / height);
+    const string =
+      "perspective(500px) scale(1.1) rotateX(" +
+      xRotation +
+      "deg) rotateY(" +
+      yRotation +
+      "deg)";
+      icon3.style.transform = string;
+  }
+
+  icon1.addEventListener("mouseout", function () {
+    icon1.style.transform = "perspective(500px) scale(1) rotateX(0) rotateY(0)";
+  });
+  icon1.addEventListener("mousedown", function () {
+    icon1.style.transform = "perspective(500px) scale(0.9) rotateX(0) rotateY(0)";
+  });
+  icon1.addEventListener("mouseup", function () {
+    icon1.style.transform = "perspective(500px) scale(1.1) rotateX(0) rotateY(0)";
+  });
+  icon2.addEventListener("mouseout", function () {
+    icon2.style.transform = "perspective(500px) scale(1) rotateX(0) rotateY(0)";
+  });
+  icon2.addEventListener("mousedown", function () {
+    icon2.style.transform = "perspective(500px) scale(0.9) rotateX(0) rotateY(0)";
+  });
+  icon2.addEventListener("mouseup", function () {
+    icon2.style.transform = "perspective(500px) scale(1.1) rotateX(0) rotateY(0)";
+  });
+  icon3.addEventListener("mouseout", function () {
+    icon3.style.transform = "perspective(500px) scale(1) rotateX(0) rotateY(0)";
+  });
+  icon3.addEventListener("mousedown", function () {
+    icon3.style.transform = "perspective(500px) scale(0.9) rotateX(0) rotateY(0)";
+  });
+  icon3.addEventListener("mouseup", function () {
+    icon3.style.transform = "perspective(500px) scale(1.1) rotateX(0) rotateY(0)";
+  });
+
   var firstTone = "90%";
   var secondTone = "80%";
   function getCookie(cname) {
@@ -184,9 +273,7 @@
       "hsla(0, 0%, 86%, 0.555)";
     setHue();
   }
-</script>
 
-<script>
   window.onload = function hueThemeSetter() {
     setHue();
     var darkmode = getCookie("darkmode");
@@ -238,10 +325,6 @@
     addCookie("hue=" + hue + ";");
     console.log("changed hue cookie");
   });
-</script>
-
-<script>
-  console.log("script.js loaded");
 
   let date = new Date();
 
