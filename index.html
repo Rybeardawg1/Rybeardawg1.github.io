@@ -11,7 +11,10 @@
   <body>
     <div class="BarslideIn" id="BarslideInEffect">
       <header>
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <nav
+          id="navbar"
+          class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"
+        >
           <div class="container-fluid">
             <div class="collapse navbar-collapse" id="navbarCollapse">
               <ul class="navbar-nav me-auto mb-2 mb-md-0">
@@ -32,6 +35,12 @@
                     rel="noopener noreferrer"
                     >Resume</a
                   >
+                </li>
+              </ul>
+              <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+                <li class="nav-item nav-link">
+                  <input type="checkbox" checked id="darkmode-toggle" />
+                  <label for="darkmode-toggle" />
                 </li>
               </ul>
             </div>
@@ -89,6 +98,7 @@
       </div>
     </main>
     <p
+      id="last-updated-p"
       style="
         position: absolute;
         left: 1%;
@@ -105,6 +115,8 @@
 </html>
 
 <script>
+  var firstTone = "90%";
+  var secondTone = "80%";
   function getCookie(cname) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
@@ -123,25 +135,84 @@
   function addCookie(cookie) {
     document.cookie = cookie;
   }
+  function setHue() {
+    var hue = getCookie("hue");
+    if (hue == "") {
+      hue = "227";
+    }
+    var bgHsl =
+      " linear-gradient(166deg, hsl(" +
+      hue +
+      ", " +
+      firstTone +
+      ", " +
+      firstTone +
+      ") 0%, hsl(" +
+      hue +
+      ", " +
+      secondTone +
+      ", " +
+      secondTone +
+      ") 100%)";
+    document.body.style.background = bgHsl;
+    document.body.style.backgroundAttachment = "fixed";
+    document.body.style.backgroundSize = "800%";
+    document.body.style.backgroundRepeat = "no-repeat";
+    document.querySelector(".color-range").value = hue / 3.6;
+  }
+  function lightMode() {
+    document.body.style.color = "black";
+    document.getElementById("navbar").classList.remove("bg-dark");
+    document.getElementById("navbar").classList.add("bg-light");
+    document.getElementById("navbar").classList.remove("navbar-dark");
+    document.getElementById("navbar").classList.add("navbar-light");
+    firstTone = "90%";
+    secondTone = "80%";
+    document.getElementById("last-updated-p").style.color =
+      "hsla(0, 0%, 0%, 1)";
+    setHue();
+  }
+  function darkMode() {
+    document.body.style.color = "white";
+    document.getElementById("navbar").classList.remove("bg-light");
+    document.getElementById("navbar").classList.add("bg-dark");
+    document.getElementById("navbar").classList.remove("navbar-light");
+    document.getElementById("navbar").classList.add("navbar-dark");
+    firstTone = "30%";
+    secondTone = "20%";
+    document.getElementById("last-updated-p").style.color =
+      "hsla(0, 0%, 86%, 0.555)";
+    setHue();
+  }
 </script>
 
 <script>
-  window.onload = function hueSetter() {
-    if (getCookie("hue") != "") {
-      var hue = getCookie("hue");
-      var bgHsl =
-        " linear-gradient(166deg, hsl(" +
-        hue +
-        ", 36%, 36%) 0%, hsl(" +
-        hue +
-        ", 31%, 24%) 100%)";
-      document.body.style.background = bgHsl;
-      document.body.style.backgroundAttachment = "fixed";
-      document.body.style.backgroundSize = "800%";
-      document.body.style.backgroundRepeat = "no-repeat";
-      document.querySelector(".color-range").value = hue / 3.6;
+  window.onload = function hueThemeSetter() {
+    setHue();
+    var darkmode = getCookie("darkmode");
+    if (darkmode == "false") {
+      document.getElementById("darkmode-toggle").checked = false;
+      lightMode();
+    } else {
+      document.getElementById("darkmode-toggle").checked = true;
+      darkMode();
     }
   };
+
+  var darkmodeToggle = document.getElementById("darkmode-toggle");
+  darkmodeToggle.addEventListener("change", function (e) {
+    this.checked ? darkMode() : lightMode();
+    addCookie("darkmode=" + this.checked + ";");
+    console.log("changed darkmode cookie");
+    var darkmode = getCookie("darkmode");
+    if (darkmode == "true") {
+      document.getElementById("darkmode-toggle").checked = true;
+      darkMode();
+    } else if (darkmode == "false") {
+      document.getElementById("darkmode-toggle").checked = false;
+      lightMode();
+    }
+  });
 
   var colorRange = document.querySelector(".color-range");
   colorRange.addEventListener("input", function (e) {
@@ -149,9 +220,17 @@
     var bgHsl =
       " linear-gradient(166deg, hsl(" +
       hue +
-      ", 36%, 36%) 0%, hsl(" +
+      ", " +
+      firstTone +
+      ", " +
+      firstTone +
+      ") 0%, hsl(" +
       hue +
-      ", 31%, 24%) 100%)";
+      ", " +
+      secondTone +
+      ", " +
+      secondTone +
+      ") 100%)";
     document.body.style.background = bgHsl;
     document.body.style.backgroundAttachment = "fixed";
     document.body.style.backgroundSize = "800%";

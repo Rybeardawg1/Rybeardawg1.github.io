@@ -4,8 +4,8 @@ body {
   color: #ebebeb;
   background: linear-gradient(
     166deg,
-    hsl(227, 36%, 36%) 0%,
-    hsl(227, 31%, 24%) 100%
+    hsl(227, 20%, 20%) 0%,
+    hsl(227, 10%, 10%) 100%
   );
   background-repeat: no-repeat;
   background-size: 800%;
@@ -13,6 +13,40 @@ body {
   background-attachment: fixed;
   overflow: hidden;
   user-select: none;
+}
+
+label {
+  width: 3rem;
+  height: 1.5rem;
+  vertical-align: middle;
+  background: #ebebeb;
+  border-radius: 200px;
+  box-shadow: inset 0px 5px 15px rgba(0, 0, 0, 0.4),
+    inset 0px -5px 15px rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: 0.3s;
+}
+label:after {
+  content: "";
+  width: 1.5rem;
+  height: 1.5rem;
+  position: absolute;
+  background: linear-gradient(180deg, #ffcc89, #d8860b);
+  border-radius: 180px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+#darkmode-toggle {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+#darkmode-toggle:checked + label {
+  background: #242424;
+}
+#darkmode-toggle:checked + label:after {
+  transform: translateX(100%);
+  background: linear-gradient(180deg, #777, #3a3a3a);
 }
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
