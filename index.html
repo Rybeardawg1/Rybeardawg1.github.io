@@ -61,10 +61,8 @@
                   rel="noopener noreferrer"
                 >
                   <img
-                    id="icon1" 
+                    id="icon1"
                     src="Images/LinkedIn_logo_initials.png"
-                    width="144"
-                    height="144"
                   />
                 </a>
                 <h2 style="padding-top: 10px">LinkedIn</h2>
@@ -79,8 +77,6 @@
                   <img
                     id="icon2"
                     src="Images/image0 (2).jpg"
-                    width="144"
-                    height="144"
                   />
                 </a>
                 <h2 style="padding-top: 10px">GitHub</h2>
@@ -95,8 +91,6 @@
                   <img
                     id="icon3"
                     src="Images/RyanLogo.jpg"
-                    width="144"
-                    height="144"
                   />
                 </a>
                 <rect width="100%" height="100%" fill="#777" />
@@ -118,6 +112,16 @@
       "
     >
       Last Updated: <span id="last-updated">Loading...</span>
+    </p>
+    <p
+      id="anime-quote-p"
+      style="
+        margin-top: 20%;
+        text-align: center;
+        color: hsla(0, 0%, 86%, 0.555);
+      "
+    >
+      <span id="anime-quote"></span>
     </p>
     <div style="opacity: 70%; position: absolute; right: 1%; bottom: 1%">
       <input class="color-range" type="range" min="0" max="100" value="" />
@@ -147,7 +151,7 @@
       "deg) rotateY(" +
       yRotation +
       "deg)";
-      icon1.style.transform = string;
+    icon1.style.transform = string;
   }
   function handleIcon2Move(e) {
     const xVal = e.layerX;
@@ -160,7 +164,7 @@
       "deg) rotateY(" +
       yRotation +
       "deg)";
-      icon2.style.transform = string;
+    icon2.style.transform = string;
   }
   function handleIcon3Move(e) {
     const xVal = e.layerX;
@@ -173,35 +177,41 @@
       "deg) rotateY(" +
       yRotation +
       "deg)";
-      icon3.style.transform = string;
+    icon3.style.transform = string;
   }
 
   icon1.addEventListener("mouseout", function () {
     icon1.style.transform = "perspective(500px) scale(1) rotateX(0) rotateY(0)";
   });
   icon1.addEventListener("mousedown", function () {
-    icon1.style.transform = "perspective(500px) scale(0.9) rotateX(0) rotateY(0)";
+    icon1.style.transform =
+      "perspective(500px) scale(0.9) rotateX(0) rotateY(0)";
   });
   icon1.addEventListener("mouseup", function () {
-    icon1.style.transform = "perspective(500px) scale(1.1) rotateX(0) rotateY(0)";
+    icon1.style.transform =
+      "perspective(500px) scale(1.1) rotateX(0) rotateY(0)";
   });
   icon2.addEventListener("mouseout", function () {
     icon2.style.transform = "perspective(500px) scale(1) rotateX(0) rotateY(0)";
   });
   icon2.addEventListener("mousedown", function () {
-    icon2.style.transform = "perspective(500px) scale(0.9) rotateX(0) rotateY(0)";
+    icon2.style.transform =
+      "perspective(500px) scale(0.9) rotateX(0) rotateY(0)";
   });
   icon2.addEventListener("mouseup", function () {
-    icon2.style.transform = "perspective(500px) scale(1.1) rotateX(0) rotateY(0)";
+    icon2.style.transform =
+      "perspective(500px) scale(1.1) rotateX(0) rotateY(0)";
   });
   icon3.addEventListener("mouseout", function () {
     icon3.style.transform = "perspective(500px) scale(1) rotateX(0) rotateY(0)";
   });
   icon3.addEventListener("mousedown", function () {
-    icon3.style.transform = "perspective(500px) scale(0.9) rotateX(0) rotateY(0)";
+    icon3.style.transform =
+      "perspective(500px) scale(0.9) rotateX(0) rotateY(0)";
   });
   icon3.addEventListener("mouseup", function () {
-    icon3.style.transform = "perspective(500px) scale(1.1) rotateX(0) rotateY(0)";
+    icon3.style.transform =
+      "perspective(500px) scale(1.1) rotateX(0) rotateY(0)";
   });
 
   var firstTone = "90%";
@@ -259,6 +269,7 @@
     secondTone = "80%";
     document.getElementById("last-updated-p").style.color =
       "hsla(0, 0%, 0%, 1)";
+    document.getElementById("anime-quote-p").style.color = "hsla(0, 0%, 0%, 1)";
     setHue();
   }
   function darkMode() {
@@ -270,6 +281,8 @@
     firstTone = "30%";
     secondTone = "20%";
     document.getElementById("last-updated-p").style.color =
+      "hsla(0, 0%, 86%, 0.555)";
+    document.getElementById("anime-quote-p").style.color =
       "hsla(0, 0%, 86%, 0.555)";
     setHue();
   }
@@ -370,4 +383,27 @@
       ", " +
       lastCommitDate.getFullYear();
   };
+
+  quotes = [
+    '"The difference between the novice and the master is that the master has failed more times than the novice has tried." - Koro Sensei',
+    '"In my next life I want to be me and meet you again." - Gon',
+    "\"You should enjoy the little detours to the fullest. Because that's where you'll find the things more important than what you want.\" - Ging",
+    "\"The shape of happiness might resemble glass. Even though you don't usually notice it, it's still definitely there. You merely have to change your point of view.\ - Lelouch",
+    "\"Deep down there's a light that never goes out!\" - Sora",
+    "\"I'll take a potato chip.............................. and eat it\" - Light",
+    "\"Everything you say and do...it all sparkles so brightly. It's too blinding for me, and I end up closing my eyes.\" - Arima", 
+    "\"My dad said people who've never smoked before are missing out on half of their lives. It made me realize that everyone has a different idea of missing out.\" - Mob",
+    "\"I'm the protagonist of my own life\" - Mob",
+    "\"Oh my god\" - Joseph Joestar",
+    "\"They say the best blaze burns brightest when circumstances are at their worst.\" - Sophie",
+    "\"El Psy Congroo\" - Okabe",
+    "\"This is exhilarating\" - Senku",
+    "\"No one can gain without sacrificing something. But by enduring that pain and overcoming it, they shall obtain a powerful, unmatched heart. A fullmetal heart.\" - Edward Elric",
+    "\"I want to be Chainsaw Man\" - Denji",
+    "\"I think you and I can do this. To change the world...and we just have to start with ourselves.\" - Emma",
+    "\"Are you the strongest because you're Satoru Gojo, or are you Satoru Gojo because you're the strongest?\" - Geto",
+  ];
+
+  document.getElementById("anime-quote").textContent =
+    quotes[Math.floor(Math.random() * quotes.length)];
 </script>
